@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.IdentityModel.Protocols;
-
-namespace TestNetCore.Models.MySQL
+﻿namespace TestNetCore.Models.MySQL
 {
     public class ConnectionObject
     {

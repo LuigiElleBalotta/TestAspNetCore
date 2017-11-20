@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace TestNetCore.Constants
+﻿namespace TestNetCore.Constants
 {
     public static class Misc
     {

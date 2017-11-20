@@ -1,5 +1,3 @@
-using System;
-
 namespace TestNetCore.Models
 {
     public class ErrorViewModel
