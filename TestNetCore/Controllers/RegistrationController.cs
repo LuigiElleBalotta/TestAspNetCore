@@ -16,8 +16,10 @@ namespace TestNetCore.Controllers
 
 			Registration bo = new Registration();
 
-			if( bo.DoRegistration( data ))
+			if( bo.DoRegistration( data )) {
+				//@todo doLogin and load dashboard
 				View( "Success" );
+			}
 
 			return View( "Index" );
 		}
