@@ -6,5 +6,11 @@
 		{
 			Mysql = 1
 		}
+
+        public enum LoginStatus
+        {
+            Failed = 0,
+            OK = 1
+        }
     }
 }
