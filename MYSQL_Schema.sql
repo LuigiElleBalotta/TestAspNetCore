@@ -1,0 +1,9 @@
+﻿DROP TABLE IF EXISTS utente;
+CREATE TABLE IF NOT EXISTS utente (
+  ID int(11) NOT NULL AUTO_INCREMENT,
+  Email varchar(50) NOT NULL DEFAULT '0',
+  FirstName varchar(50) NOT NULL DEFAULT '0',
+  LastName varchar(50) NOT NULL DEFAULT '0',
+  Password varchar(50) NOT NULL DEFAULT '0',
+  PRIMARY KEY (ID)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;

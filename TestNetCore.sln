@@ -16,6 +16,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB", "DB", "{A2CF2BF4-289F-45D9-BE90-62E4C4749F8C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Base", "Base", "{78D85B11-CBAC-41AA-B142-F09267A14ACB}"
+	ProjectSection(SolutionItems) = preProject
+		MYSQL_Schema.sql = MYSQL_Schema.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +84,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A2CF2BF4-289F-45D9-BE90-62E4C4749F8C} = {08DE1672-0785-48A9-B1A0-973351575059}
+		{78D85B11-CBAC-41AA-B142-F09267A14ACB} = {A2CF2BF4-289F-45D9-BE90-62E4C4749F8C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {18B0F7E2-C66E-4213-85D2-83AFAA66029E}
