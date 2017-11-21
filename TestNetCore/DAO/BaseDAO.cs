@@ -18,7 +18,7 @@ namespace TestNetCore.DAO
 					break;
 			}
 
-			if( DB.Initialize( DBContext.ConnectionString, dbtype, false )) {
+			if( DB.Initialize( DBContext.ConnectionString, dbtype, false, false )) {
 				Connected = true;
 			} else {
 				Connected = false;
