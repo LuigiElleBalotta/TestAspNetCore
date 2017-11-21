@@ -11,7 +11,6 @@ namespace TestNetCore.BO
 
 		public bool DoRegistration( RegisterViewModel obj )
 		{
-			bool done;
 			if( dao.Connected ) {
 				Utente ut = new Utente
 							{
@@ -21,7 +20,7 @@ namespace TestNetCore.BO
 								LastName = obj.LastName
 							};
 
-				return dao.DB.Insert( ut );
+				return DAO.Registration.InsertUtente( dao, ut );
 			}
 			return false;
 		}

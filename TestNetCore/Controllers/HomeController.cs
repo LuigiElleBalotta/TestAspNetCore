@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using TestNetCore.BO;
 using TestNetCore.Models;
 
 namespace TestNetCore.Controllers
@@ -31,6 +32,13 @@ namespace TestNetCore.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public ActionResult ListaUtenti()
+        {
+            Home bo = new Home();
+
+            return View( bo.GetListaUtenti());
         }
     }
 }

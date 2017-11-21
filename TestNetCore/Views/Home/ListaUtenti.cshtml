@@ -1,0 +1,30 @@
+﻿@using TestNetCore.Models.DB
+@model Utente[]
+
+@{
+    ViewBag.Title = "Lista Utenti";
+    Layout = "_Layout";
+}
+
+<h2>Lista Utenti</h2>
+<div>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+        </tr>
+        @if( Model != null) {
+            
+        foreach( Utente u in Model ) {
+            <tr>
+                <td>
+                    @u.FirstName
+                </td>
+                <td>
+                    @u.LastName
+                </td>
+            </tr>
+            }
+        }
+    </table>
+</div>
