@@ -25,6 +25,8 @@ namespace TestNetCore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddDistributedMemoryCache();
+            services.AddSession();
 
 			services.Add( new ServiceDescriptor( typeof( DBContext ), new DBContext( Configuration.GetConnectionString( "DefaultConnection" ))));
         }
@@ -46,6 +48,8 @@ namespace TestNetCore
             }
 
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseMvc(routes =>
             {

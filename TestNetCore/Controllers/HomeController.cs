@@ -1,7 +1,10 @@
 ﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using TestNetCore.BO;
 using TestNetCore.Models;
+using TestNetCore.Models.DB;
 
 namespace TestNetCore.Controllers
 {
@@ -38,7 +41,12 @@ namespace TestNetCore.Controllers
         {
             Home bo = new Home();
 
-            return View( bo.GetListaUtenti());
+            Utente ut = JsonConvert.DeserializeObject<Utente>( HttpContext.Session.GetString( "User" ));
+
+            if( ut != null )
+                return View( bo.GetListaUtenti());
+
+            return RedirectToAction( "DoRegistration", "Registration" );
         }
     }
 }

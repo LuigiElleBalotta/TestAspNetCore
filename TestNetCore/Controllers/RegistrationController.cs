@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using TestNetCore.Models.Registration;
 using TestNetCore.BO;
 
@@ -16,9 +18,13 @@ namespace TestNetCore.Controllers
 
 			Registration bo = new Registration();
 
-			if( bo.DoRegistration( data )) {
+            RegistrationResponse response = bo.DoRegistration( data );
+
+			if( response.Inserted ) {
 				//@todo doLogin and load dashboard
-				View( "Success" );
+                HttpContext.Session.SetString( "User", JsonConvert.SerializeObject( response.Utente ) );
+
+				return RedirectToAction( "ListaUtenti", "Home" );
 			}
 
 			return View( "Index" );

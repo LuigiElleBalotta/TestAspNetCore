@@ -9,7 +9,7 @@ namespace TestNetCore.BO
     {
 		private BaseDAO dao = new BaseDAO( DatabaseType.MySql );
 
-		public bool DoRegistration( RegisterViewModel obj )
+		public RegistrationResponse DoRegistration( RegisterViewModel obj )
 		{
 			if( dao.Connected ) {
 				Utente ut = new Utente
@@ -20,9 +20,19 @@ namespace TestNetCore.BO
 								LastName = obj.LastName
 							};
 
-				return DAO.Registration.InsertUtente( dao, ut );
+                bool ret = DAO.Registration.InsertUtente( dao, ut );
+
+                ut.ID = DAO.Users.GetID( dao, ut.Email, ut.Password );
+
+                RegistrationResponse response = new RegistrationResponse
+                                                {
+                                                    Inserted = ret,
+                                                    Utente = ut
+                                                };
+
+				return response;
 			}
-			return false;
+			return new RegistrationResponse{ Inserted = false };
 		}
     }
 }
