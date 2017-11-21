@@ -1,13 +1,14 @@
 ﻿using System.Globalization;
 using System.Threading;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace TestNetCore.Controllers
 {
-    public class BaseController : Controller
+    public class BaseController : Controller, IActionFilter
     {
 
-		protected JsonResult JsonOK()
+        protected JsonResult JsonOK()
 		{
 			return Json( "" );
 		}
