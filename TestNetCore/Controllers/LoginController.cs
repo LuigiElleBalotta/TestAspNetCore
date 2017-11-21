@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using TestNetCore.BO;
 using TestNetCore.Constants;
 using TestNetCore.Models.Login;
@@ -20,7 +22,11 @@ namespace TestNetCore.Controllers
 
             if( ret.Status == Misc.LoginStatus.OK ) {
                 //@Todo: set session value and redirect to the dashboard
-                return View( "Success" );
+
+                HttpContext.Session.SetString( "User", JsonConvert.SerializeObject( ret.Utente ) );
+
+
+                return RedirectToAction( "Index", "Home" );
             }
 
             return Index();

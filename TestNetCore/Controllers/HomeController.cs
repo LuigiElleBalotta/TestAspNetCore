@@ -12,7 +12,10 @@ namespace TestNetCore.Controllers
     {
         public IActionResult Index()
         {
-			if( !HttpContext.User.Identity.IsAuthenticated )
+
+            byte[] ret;
+
+			if( !HttpContext.Session.TryGetValue( "User", out ret ))
 				return RedirectToAction( "Index", "Registration" );
 
             return View();
