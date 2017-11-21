@@ -17,11 +17,11 @@ if("undefined"==typeof jQuery)throw new Error("AdminLTE requires jQuery");+funct
 $(function () {
   'use strict'
 
-  $.get('/adsync', function (response) {
+  /*$.get('/adsync', function (response) {
     var col = $('<div />').html(response)
 
     $('.content-wrapper .content').append(col)
-  })
+  })*/
 
   $(document).on('click', '.ad-click-event', function (e) {
     e.preventDefault()
@@ -68,7 +68,7 @@ $(function () {
   /**
    * Create ThemeQuarry ad
    */
-  var wrapper_css = {
+  /*var wrapper_css = {
     'padding'    : '20px 30px',
     'background' : '#f39c12',
     'display'    : 'none',
@@ -131,15 +131,16 @@ $(function () {
         ds.setItem('no_show', true)
       }
     })
-
+    
   wrapper.append(close)
   wrapper.append(link)
   wrapper.append(btn)
 
   $('.content-wrapper').prepend(wrapper)
 
-  wrapper.hide(4).delay(500).slideDown()
+  wrapper.hide(4).delay(500).slideDown()*/
 });
+
 (function (i, s, o, g, r, a, m) {
   i['GoogleAnalyticsObject'] = r
   i[r] = i[r] || function () {

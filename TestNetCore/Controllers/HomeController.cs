@@ -18,6 +18,10 @@ namespace TestNetCore.Controllers
 			if( !HttpContext.Session.TryGetValue( "User", out ret ))
 				return RedirectToAction( "Index", "Registration" );
 
+            Utente user = JsonConvert.DeserializeObject<Utente>( System.Text.UTF8Encoding.UTF8.GetString( ret ));
+
+            ViewBag.User = user;
+
             return View();
         }
 
