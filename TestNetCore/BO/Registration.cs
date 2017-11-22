@@ -24,6 +24,13 @@ namespace TestNetCore.BO
 
                 ut.ID = DAO.Users.GetID( dao, ut.Email, ut.Password );
 
+                if( ret ) {
+                    //Creates a new profile connected to user
+                    Profilo profilo = new Profilo{ IDUtente = ut.ID };
+
+                    DAO.Registration.InsertProfilo( dao, profilo );
+                }
+
                 RegistrationResponse response = new RegistrationResponse
                                                 {
                                                     Inserted = ret,

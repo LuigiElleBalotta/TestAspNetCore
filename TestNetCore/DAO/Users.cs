@@ -12,5 +12,10 @@ namespace TestNetCore.DAO
         {
             return dao.DB.Single<Utente>( x => x.Email == email && x.Password == password  ).ID;
         }
+
+        public static Profilo GetProfilo(BaseDAO dao, int userId )
+        {
+            return dao.DB.Single<Profilo>( profilo => profilo.IDUtente == userId );
+        }
     }
 }

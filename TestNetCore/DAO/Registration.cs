@@ -8,5 +8,10 @@ namespace TestNetCore.DAO
         {
             return dao.DB.Insert( utente );
         }
+
+        public static void InsertProfilo( BaseDAO dao, Profilo profilo )
+        {
+            dao.DB.Insert( profilo );
+        }
     }
 }

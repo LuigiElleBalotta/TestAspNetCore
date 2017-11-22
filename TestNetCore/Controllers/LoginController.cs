@@ -22,14 +22,11 @@ namespace TestNetCore.Controllers
 
             if( ret.Status == Misc.LoginStatus.OK ) {
                 //@Todo: set session value and redirect to the dashboard
-
                 HttpContext.Session.SetString( "User", JsonConvert.SerializeObject( ret.Utente ) );
-
-
                 return RedirectToAction( "Index", "Home" );
             }
 
-            return Index();
+            return RedirectToAction( "Index" );
             
         }
     }

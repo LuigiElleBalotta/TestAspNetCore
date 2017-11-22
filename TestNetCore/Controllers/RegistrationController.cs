@@ -24,7 +24,7 @@ namespace TestNetCore.Controllers
 				//@todo doLogin and load dashboard
                 HttpContext.Session.SetString( "User", JsonConvert.SerializeObject( response.Utente ) );
 
-				return RedirectToAction( "ListaUtenti", "Home" );
+				return RedirectToAction( "Index", "Home" );
 			}
 
 			return View( "Index" );

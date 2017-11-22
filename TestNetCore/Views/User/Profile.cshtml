@@ -1,7 +1,8 @@
-﻿
+﻿@model TestNetCore.Models.User.ProfiloModel
+
 @{
     ViewBag.Title = "Profilo";
     Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
 }
 
-<h2>Profilo</h2>
+<h2>Benvenuto @Model.Utente.LastName @Model.Utente.FirstName</h2>

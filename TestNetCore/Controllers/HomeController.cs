@@ -12,7 +12,7 @@ namespace TestNetCore.Controllers
     {
         public IActionResult Index()
         {
-
+            SetPageTitle("Dashboard");
             byte[] ret;
 
 			if( !HttpContext.Session.TryGetValue( "User", out ret ))
