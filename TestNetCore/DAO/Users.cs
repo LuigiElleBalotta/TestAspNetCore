@@ -17,5 +17,10 @@ namespace TestNetCore.DAO
         {
             return dao.DB.Single<Profilo>( profilo => profilo.IDUtente == userId );
         }
+
+        public static void UpdateBiography( BaseDAO dao, string content, int userID )
+        {
+            dao.DB.Update<Profilo>( x => x.IDUtente == userID, x => x.Biografia.Set( content ));
+        }
     }
 }

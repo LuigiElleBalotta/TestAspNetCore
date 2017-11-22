@@ -3,7 +3,10 @@
 @{
     ViewBag.Title = "Profilo";
     Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+
 }
+
+<script src="~/js/user/profile.js"></script>
 
 <div class="row">
     <div class="col-md-3">
@@ -237,7 +240,7 @@
                         <button type="button" data-toggle="modal" data-target="#modalModificaBiografias" class="btn btn-lg btn-block btn-primary"> Modifica </button>
                     }
 
-                    @Model.Profilo.Biografia
+                    @Html.Raw(Model.Profilo.Biografia)
                     
                     
                     <!-- Modal -->
@@ -252,14 +255,14 @@
                                     <div class="box-body pad">
                                         <form>
                                             <textarea class="textarea" id="textareaBiografia" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
-                                                @Model.Profilo.Biografia
+                                                @(Html.Raw(Model.Profilo.Biografia))
                                             </textarea>
                                         </form>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                    <button type="button" class="btn btn-primary" onclick="aggiornaBiografia();">Save changes</button>
                                 </div>
                             </div>
                         </div>

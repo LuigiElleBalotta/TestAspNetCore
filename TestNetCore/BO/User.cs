@@ -21,5 +21,12 @@ namespace TestNetCore.BO
             }
             return profilo;
         }
+
+        public void UpdateBiography( string content, int userID )
+        {
+            if( dao.Connected ) {
+                Users.UpdateBiography( dao, content, userID );
+            }
+        }
     }
 }

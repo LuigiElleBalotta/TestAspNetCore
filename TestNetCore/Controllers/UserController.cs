@@ -30,5 +30,14 @@ namespace TestNetCore.Controllers
 
             return View( "Profile", dati );
         }
+
+        public JsonResult UpdateBiography( string content )
+        {
+            User bo = new User();
+
+            bo.UpdateBiography( content, GetUserFromSession( HttpContext.Session ).ID );
+
+            return JsonOK();
+        }
     }
 }
