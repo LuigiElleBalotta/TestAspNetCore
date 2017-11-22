@@ -18,13 +18,13 @@ namespace TestNetCore.Controllers
 
             User bo = new User();
 
-            Utente ut = GetUserFromSession( HttpContext.Session );
+            UserModel ut = GetUserFromSession( HttpContext.Session );
 
-            Profilo ret = bo.GetProfilo( ut.ID );
+            Profilo ret = bo.GetProfilo( ut.Utente.ID );
 
             ProfiloModel dati = new ProfiloModel
                                 {
-                                    Utente = ut,
+                                    Utente = ut.Utente,
                                     Profilo = ret
                                 };
 
@@ -35,7 +35,7 @@ namespace TestNetCore.Controllers
         {
             User bo = new User();
 
-            bo.UpdateBiography( content, GetUserFromSession( HttpContext.Session ).ID );
+            bo.UpdateBiography( content, GetUserFromSession( HttpContext.Session ).Utente.ID );
 
             return JsonOK();
         }
@@ -44,7 +44,7 @@ namespace TestNetCore.Controllers
         {
             User bo = new User();
 
-            bo.UpdateGenres( content, GetUserFromSession( HttpContext.Session ).ID );
+            bo.UpdateGenres( content, GetUserFromSession( HttpContext.Session ).Utente.ID );
 
             return JsonOK();
         }
@@ -53,7 +53,7 @@ namespace TestNetCore.Controllers
         {
             User bo = new User();
 
-            bo.UpdateArtists( content, GetUserFromSession( HttpContext.Session ).ID );
+            bo.UpdateArtists( content, GetUserFromSession( HttpContext.Session ).Utente.ID );
 
             return JsonOK();
         }
@@ -62,7 +62,7 @@ namespace TestNetCore.Controllers
         {
             User bo = new User();
 
-            bo.UpdateSetup( content, GetUserFromSession( HttpContext.Session ).ID );
+            bo.UpdateSetup( content, GetUserFromSession( HttpContext.Session ).Utente.ID );
 
             return JsonOK();
         }
@@ -71,7 +71,7 @@ namespace TestNetCore.Controllers
         {
             User bo = new User();
 
-            bo.UpdateCovers( content, GetUserFromSession( HttpContext.Session ).ID );
+            bo.UpdateCovers( content, GetUserFromSession( HttpContext.Session ).Utente.ID );
 
             return JsonOK();
         }

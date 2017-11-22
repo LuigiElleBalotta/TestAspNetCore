@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Newtonsoft.Json;
 using TestNetCore.Models.DB;
+using TestNetCore.Models.User;
 
 namespace TestNetCore.Controllers
 {
@@ -38,14 +39,14 @@ namespace TestNetCore.Controllers
 			return Json( "" );
 		}
 
-        internal Utente GetUserFromSession( ISession session )
+        internal UserModel GetUserFromSession( ISession session )
         {
             byte[] userByte;
             string userString = String.Empty;
-            Utente ret = null;
+            UserModel ret = null;
 
             if( session.TryGetValue( "User", out userByte )) {
-                ret = JsonConvert.DeserializeObject<Utente>( System.Text.Encoding.UTF8.GetString( userByte ));
+                ret = JsonConvert.DeserializeObject<UserModel>( System.Text.Encoding.UTF8.GetString( userByte ));
             }
 
             return ret;

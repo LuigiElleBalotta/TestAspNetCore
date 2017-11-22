@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using TestNetCore.Models.Registration;
 using TestNetCore.BO;
+using TestNetCore.Models.Login;
 
 namespace TestNetCore.Controllers
 {
@@ -22,9 +23,14 @@ namespace TestNetCore.Controllers
 
 			if( response.Inserted ) {
 				//@todo doLogin and load dashboard
-                HttpContext.Session.SetString( "User", JsonConvert.SerializeObject( response.Utente ) );
 
-				return RedirectToAction( "Index", "Home" );
+                LoginModel lm = new LoginModel
+                                {
+                                    Email = response.Utente.Email,
+                                    Password = response.Utente.Password
+                                };
+
+				return RedirectToAction( "DoLogin", "Login", new{ form = lm } );
 			}
 
 			return View( "Index" );

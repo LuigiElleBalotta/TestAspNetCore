@@ -12,5 +12,11 @@
             Failed = 0,
             OK = 1
         }
+
+        public enum Roles
+        {
+            Administrator = 1,
+            User = 2
+        }
     }
 }

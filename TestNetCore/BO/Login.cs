@@ -7,6 +7,7 @@ using TestNetCore.Constants;
 using TestNetCore.DAO;
 using TestNetCore.Models.DB;
 using TestNetCore.Models.Login;
+using TestNetCore.Models.User;
 
 namespace TestNetCore.BO
 {
@@ -18,11 +19,14 @@ namespace TestNetCore.BO
         {
             if( dao.Connected ) {
 
-                Utente ret = DAO.Login.GetUtente( dao, form.Email, form.Password );
+                UserModel ret = new UserModel();
+                
+                ret.Utente = DAO.Login.GetUtente( dao, form.Email, form.Password );
+                ret.Ruolo = DAO.Login.GetRuoloUtente( dao, ret.Utente.ID );
 
                 LoginResponse response = new LoginResponse
                                                 {
-                                                    Status = ret != null ? Misc.LoginStatus.OK : Misc.LoginStatus.Failed,
+                                                    Status = ret.Utente.ID > 0 ? Misc.LoginStatus.OK : Misc.LoginStatus.Failed,
                                                     Utente = ret
                                                 };
 

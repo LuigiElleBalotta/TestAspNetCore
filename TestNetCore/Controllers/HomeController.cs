@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using TestNetCore.BO;
 using TestNetCore.Models;
 using TestNetCore.Models.DB;
+using TestNetCore.Models.User;
 
 namespace TestNetCore.Controllers
 {
@@ -18,7 +19,7 @@ namespace TestNetCore.Controllers
 			if( !HttpContext.Session.TryGetValue( "User", out ret ))
 				return RedirectToAction( "Index", "Login" );
 
-            Utente user = JsonConvert.DeserializeObject<Utente>( System.Text.UTF8Encoding.UTF8.GetString( ret ));
+            UserModel user = JsonConvert.DeserializeObject<UserModel>( System.Text.UTF8Encoding.UTF8.GetString( ret ));
 
             ViewBag.User = user;
 
