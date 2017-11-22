@@ -15,5 +15,6 @@ namespace TestNetCore.Models.DB
         public string       PersonalSetup { get; set; }
         public string       FavouriteArtists { get; set; }
         public string       FavouriteGenres { get; set; }
+        public string       ProfileImage { get; set; }
     }
 }

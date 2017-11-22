@@ -17,7 +17,7 @@ namespace TestNetCore.BO
         {
             Profilo profilo = null;
             if( dao.Connected ) {
-                profilo = DAO.Users.GetProfilo( dao, userID );
+                profilo = Users.GetProfilo( dao, userID );
             }
             return profilo;
         }
