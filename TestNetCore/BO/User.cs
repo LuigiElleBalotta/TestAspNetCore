@@ -28,5 +28,33 @@ namespace TestNetCore.BO
                 Users.UpdateBiography( dao, content, userID );
             }
         }
+
+        public void UpdateGenres( string content, int userID )
+        {
+            if( dao.Connected ) {
+                Users.UpdateGenres( dao, content, userID );
+            }
+        }
+
+        public void UpdateArtists( string content, int userID )
+        {
+            if( dao.Connected ) {
+                Users.UpdateArtists( dao, content, userID );
+            }
+        }
+
+        public void UpdateSetup( string content, int userID )
+        {
+            if( dao.Connected ) {
+                Users.UpdateSetup( dao, content, userID );
+            }
+        }
+
+        public void UpdateCovers( string content, int userID )
+        {
+            if( dao.Connected ) {
+                Users.UpdateCovers( dao, content, userID );
+            }
+        }
     }
 }

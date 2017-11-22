@@ -39,5 +39,41 @@ namespace TestNetCore.Controllers
 
             return JsonOK();
         }
+
+        public JsonResult UpdateGenres( string content )
+        {
+            User bo = new User();
+
+            bo.UpdateGenres( content, GetUserFromSession( HttpContext.Session ).ID );
+
+            return JsonOK();
+        }
+
+        public JsonResult UpdateArtists( string content )
+        {
+            User bo = new User();
+
+            bo.UpdateArtists( content, GetUserFromSession( HttpContext.Session ).ID );
+
+            return JsonOK();
+        }
+
+        public JsonResult UpdateSetup( string content )
+        {
+            User bo = new User();
+
+            bo.UpdateSetup( content, GetUserFromSession( HttpContext.Session ).ID );
+
+            return JsonOK();
+        }
+
+        public JsonResult UpdateCovers( string content )
+        {
+            User bo = new User();
+
+            bo.UpdateCovers( content, GetUserFromSession( HttpContext.Session ).ID );
+
+            return JsonOK();
+        }
     }
 }

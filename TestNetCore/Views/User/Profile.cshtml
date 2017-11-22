@@ -18,8 +18,6 @@
 
                 <h3 class="profile-username text-center">@Model.Utente.LastName @Model.Utente.FirstName</h3>
 
-                <p class="text-muted text-center">Software Engineer</p>
-
                 <ul class="list-group list-group-unbordered">
                     <li class="list-group-item">
                         <b>Followers</b> <a class="pull-right">1,322</a> <!-- todo: add follower logic -->
@@ -60,7 +58,7 @@
                     }
 
                     <p class="text-muted" id="pPlayedCovers">
-                        @Model.Profilo.PlayedCovers
+                        @Html.Raw(Model.Profilo.PlayedCovers)
                     </p>
                     
                     <!-- Modal -->
@@ -75,14 +73,14 @@
                                     <div class="box-body pad">
                                         <form>
                                             <textarea class="textarea" id="textareaPlayedCovers" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
-                                                @Model.Profilo.PlayedCovers
+                                                @Html.Raw(Model.Profilo.PlayedCovers)
                                             </textarea>
                                         </form>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                    <button type="button" class="btn btn-primary" onclick="aggiornaCoverSuonate();">Save changes</button>
                                 </div>
                             </div>
                         </div>
@@ -103,7 +101,7 @@
                         </a>
                     }
 
-                    <p class="text-muted" id="pPersonalSetup">@Model.Profilo.PersonalSetup</p>
+                    <p class="text-muted" id="pPersonalSetup">@Html.Raw(Model.Profilo.PersonalSetup)</p>
 
                     <!-- Modal -->
                     <div class="modal fade" id="modalModificaPersonalSetup" tabindex="-1" role="dialog" aria-labelledby="PersonalSetupLabel">
@@ -117,14 +115,14 @@
                                     <div class="box-body pad">
                                         <form>
                                             <textarea class="textarea" id="textareaPersonalSetup" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
-                                                @Model.Profilo.PersonalSetup
+                                                @Html.Raw(Model.Profilo.PersonalSetup)
                                             </textarea>
                                         </form>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                    <button type="button" class="btn btn-primary" onclick="aggiornaSetUp();">Save changes</button>
                                 </div>
                             </div>
                         </div>
@@ -146,7 +144,7 @@
                     }
 
                     <p id="pFavouriteArtists">
-                        @Model.Profilo.FavouriteArtists
+                        @Html.Raw(Model.Profilo.FavouriteArtists)
                     </p>
                     
                     <!-- Modal -->
@@ -161,14 +159,14 @@
                                     <div class="box-body pad">
                                         <form>
                                             <textarea class="textarea" id="textareaFavouriteArtists" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
-                                                @Model.Profilo.FavouriteArtists
+                                                @Html.Raw(Model.Profilo.FavouriteArtists)
                                             </textarea>
                                         </form>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                    <button type="button" class="btn btn-primary" onclick="aggiornaArtistiPreferiti();">Save changes</button>
                                 </div>
                             </div>
                         </div>
@@ -190,7 +188,7 @@
                         </a>
                     }
 
-                    <p id="pFavouriteGenres">@Model.Profilo.FavouriteGenres</p>
+                    <p id="pFavouriteGenres">@Html.Raw(Model.Profilo.FavouriteGenres)</p>
                     
                     <!-- Modal -->
                     <div class="modal fade" id="modalModificaFavouriteGenres" tabindex="-1" role="dialog" aria-labelledby="FavouriteGenresLabel">
@@ -204,14 +202,14 @@
                                     <div class="box-body pad">
                                         <form>
                                             <textarea class="textarea" id="textareaFavouriteGenres" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
-                                                @Model.Profilo.FavouriteGenres
+                                                @Html.Raw(Model.Profilo.FavouriteGenres)
                                             </textarea>
                                         </form>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                    <button type="button" class="btn btn-primary" onclick="aggiornaGeneriPreferiti();">Save changes</button>
                                 </div>
                             </div>
                         </div>
@@ -228,6 +226,7 @@
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#biografia" data-toggle="tab">Biografia</a></li>
+                <li><a href="#strumenti" data-toggle="tab">Strumenti Suonati</a></li>
                 <li><a href="#gruppi" data-toggle="tab">Gruppi</a></li>
                 <li><a href="#annunci" data-toggle="tab">Annunci</a></li>
                 <li><a href="#settings" data-toggle="tab">Impostazioni</a></li>
@@ -238,6 +237,7 @@
                     @if (Model.Utente.ID == Model.Profilo.IDUtente)
                     {
                         <button type="button" data-toggle="modal" data-target="#modalModificaBiografias" class="btn btn-lg btn-block btn-primary"> Modifica </button>
+                        <hr />
                     }
 
                     @Html.Raw(Model.Profilo.Biografia)
@@ -269,6 +269,40 @@
                     </div>
 
                 </div>
+                
+                <div class="tab-pane" id="strumenti">
+                    @if (Model.Utente.ID == Model.Profilo.IDUtente)
+                    {
+                        <button type="button" data-toggle="modal" data-target="#modalModificaStrumenti" class="btn btn-lg btn-block btn-primary"> Modifica </button>
+                        <hr />
+                    }
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="modalModificaStrumenti" tabindex="-1" role="dialog" aria-labelledby="StrumentiLabel">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="StrumentiLabel">Modifica Strumenti</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="box-body pad">
+                                        <form>
+                                            <textarea class="textarea" id="textareaStrumenti" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
+                                                
+                                            </textarea>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" onclick="aggiornaStrumenti();">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- /.tab-pane -->
                 <div class="tab-pane" id="gruppi">
                     
