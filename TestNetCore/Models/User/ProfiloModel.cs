@@ -6,5 +6,7 @@ namespace TestNetCore.Models.User
     {
         public Utente Utente { get; set; }
         public Profilo Profilo { get; set; }
+        public Strumento[] Strumenti { get; set; }
+        public int[] StrumentiCollegati { get; set; }
     }
 }

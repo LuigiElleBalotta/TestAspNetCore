@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using TestNetCore.BO;
 using TestNetCore.Models.DB;
 using TestNetCore.Models.User;
@@ -13,15 +14,24 @@ namespace TestNetCore.Controllers
             SetPageTitle("Profilo");
 
             User bo = new User();
+            Anagrafiche boA = new Anagrafiche();
 
             UserModel ut = GetUserFromSession( HttpContext.Session );
 
             Profilo ret = bo.GetProfilo( ut.Utente.ID );
 
+            Strumento[] strumenti = boA.GetListaStrumenti();
+
+            ProfiloStrumento[] profiloStrumenti = bo.GetStrumentiCollegati( ret.IDUtente );
+
+            int[] strumentiCollegati = Array.ConvertAll( profiloStrumenti, x => x.IDStrumento );
+
             ProfiloModel dati = new ProfiloModel
                                 {
                                     Utente = ut.Utente,
-                                    Profilo = ret
+                                    Profilo = ret,
+                                    Strumenti = strumenti,
+                                    StrumentiCollegati = strumentiCollegati
                                 };
 
             return View( "Profile", dati );
@@ -68,6 +78,15 @@ namespace TestNetCore.Controllers
             User bo = new User();
 
             bo.UpdateCovers( content, GetUserFromSession( HttpContext.Session ).Utente.ID );
+
+            return JsonOK();
+        }
+
+        public JsonResult UpdatePlayedInstruments( int[] strumentiSelezionati )
+        {
+            User bo = new User();
+
+            bo.UpdatePlayedInstruments( strumentiSelezionati, GetUserFromSession( HttpContext.Session ).Utente.ID );
 
             return JsonOK();
         }

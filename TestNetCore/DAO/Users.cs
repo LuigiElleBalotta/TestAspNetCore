@@ -38,5 +38,21 @@ namespace TestNetCore.DAO
         {
             dao.DB.Update<Profilo>( x => x.IDUtente == userID, x => x.PlayedCovers.Set( content ));
         }
+
+        public static ProfiloStrumento[] GetStrumentiCollegati( BaseDAO dao, int idUtente )
+        {
+            return dao.DB.SelectArray<ProfiloStrumento>( ps => ps.IDProfilo == idUtente );
+        }
+
+        public static bool DeletePlayedInstrumentsForUser( BaseDAO dao, int utenteId )
+        {
+            return dao.DB.Delete<ProfiloStrumento>( ps => ps.IDProfilo == utenteId );
+        }
+
+        public static void InsertPlayedInstrumentsForUser( BaseDAO dao, int[] strumentiSelezionati, int utenteId )
+        {
+            foreach( int strumento in strumentiSelezionati )
+                dao.DB.Insert<ProfiloStrumento>( new ProfiloStrumento{ IDStrumento = strumento, IDProfilo = utenteId } );
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿@model TestNetCore.Models.User.ProfiloModel
+﻿@using TestNetCore.Models.DB
+@model TestNetCore.Models.User.ProfiloModel
 
 @{
     ViewBag.Title = "Profilo";
@@ -285,14 +286,14 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     <h4 class="modal-title" id="StrumentiLabel">Modifica Strumenti</h4>
                                 </div>
-                                <div class="modal-body">
-                                    <div class="box-body pad">
-                                        <form>
-                                            <textarea class="textarea" id="textareaStrumenti" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
-                                                
-                                            </textarea>
-                                        </form>
-                                    </div>
+                                <div class="modal-body" id="modalContainterStrumenti">
+                                    @foreach( Strumento strumento in Model.Strumenti ) {
+                                        bool selected = Model.StrumentiCollegati.Contains( strumento.ID );
+                                        <div class="checkbox">
+                                            <input type="checkbox" checked="@selected" class="strumentoChk" value="@strumento.ID" />
+                                            @strumento.Descrizione
+                                        </div>
+                                    }
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

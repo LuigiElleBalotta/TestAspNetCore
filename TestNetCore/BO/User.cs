@@ -51,5 +51,22 @@ namespace TestNetCore.BO
                 Users.UpdateCovers( dao, content, userID );
             }
         }
+
+        public ProfiloStrumento[] GetStrumentiCollegati( int idUtente )
+        {
+            ProfiloStrumento[] profiloStrumenti = null;
+            if( dao.Connected ) {
+                profiloStrumenti = Users.GetStrumentiCollegati( dao, idUtente );
+            }
+            return profiloStrumenti;
+        }
+
+        public void UpdatePlayedInstruments( int[] strumentiSelezionati, int utenteId )
+        {
+            if( dao.Connected ) {
+                Users.DeletePlayedInstrumentsForUser( dao, utenteId );
+                Users.InsertPlayedInstrumentsForUser( dao, strumentiSelezionati, utenteId );
+            }
+        }
     }
 }

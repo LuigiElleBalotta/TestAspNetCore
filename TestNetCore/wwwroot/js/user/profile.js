@@ -68,3 +68,19 @@ function aggiornaCoverSuonate() {
             }
         });
 }
+
+function aggiornaStrumenti() {
+    var strumentiSelezionati = getSelectedCheckboxesIn( 'modalContainterStrumenti' );
+
+    var arrayValue = $( strumentiSelezionati ).map( function() { return $( this ).val(); }).get();
+
+    $.ajax({
+            type: "POST",
+            data: { 'strumentiSelezionati': arrayValue },
+            url: "/User/UpdatePlayedInstruments", 
+            success: function(result){
+                window.location.reload( true );
+            }
+        });
+
+}
