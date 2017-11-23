@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using TestNetCore.BO;
 using TestNetCore.Models.DB;
 
@@ -33,6 +29,15 @@ namespace TestNetCore.Controllers
             Anagrafiche bo = new Anagrafiche();
 
             bo.UpdateInstrument( descrizione, id );
+
+            return JsonOK();
+        }
+
+        public JsonResult DeleteInstrument( int[] ids )
+        {
+            Anagrafiche bo = new Anagrafiche();
+
+            bo.DeleteInstrument( ids );
 
             return JsonOK();
         }

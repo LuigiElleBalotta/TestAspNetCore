@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Lappa.ORM.Constants;
+﻿using Lappa.ORM.Constants;
 using TestNetCore.DAO;
 using TestNetCore.Models.DB;
 

@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Globalization;
 using System.Threading;
-using Microsoft.ApplicationInsights.Extensibility.Implementation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Newtonsoft.Json;
-using TestNetCore.Models.DB;
 using TestNetCore.Models.User;
 
 namespace TestNetCore.Controllers

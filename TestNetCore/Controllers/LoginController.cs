@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using TestNetCore.BO;
 using TestNetCore.Constants;
 using TestNetCore.Models.Login;
+using TestNetCore.Models.User;
 
 namespace TestNetCore.Controllers
 {
@@ -29,6 +30,31 @@ namespace TestNetCore.Controllers
 
             return RedirectToAction( "Index" );
             
+        }
+
+        public static void Logout( HttpContext ctx )
+        {
+            ctx.Session?.Clear();
+        }
+
+        public static void ControlloSessione( HttpContext ctx )
+        {
+            UserModel ut = null;
+
+            UserController bo = new UserController();
+
+            if( ctx.Session != null ) {
+
+                ut = bo.GetUserFromSession( ctx.Session );
+
+                if( ut == null ) {
+					
+                    Logout( ctx );
+                }
+            }
+
+            if( ut == null )
+                Logout( ctx );
         }
     }
 }

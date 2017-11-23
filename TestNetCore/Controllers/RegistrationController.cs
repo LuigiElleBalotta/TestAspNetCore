@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
+﻿using Microsoft.AspNetCore.Mvc;
 using TestNetCore.Models.Registration;
 using TestNetCore.BO;
 using TestNetCore.Models.Login;

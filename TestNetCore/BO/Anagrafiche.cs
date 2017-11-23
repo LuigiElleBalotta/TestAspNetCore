@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Lappa.ORM.Constants;
 using TestNetCore.DAO;
 using TestNetCore.Models.DB;
@@ -32,6 +29,13 @@ namespace TestNetCore.BO
         {
             if( dao.Connected ) {
                 DAO.Anagrafiche.UpdateInstrument( dao, descrizione, id );
+            }
+        }
+
+        public void DeleteInstrument( int[] ids )
+        {
+            if( dao.Connected ) {
+                DAO.Anagrafiche.DeleteInstrument( dao, ids );
             }
         }
     }

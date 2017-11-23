@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using TestNetCore.Models.DB;
+﻿using TestNetCore.Models.DB;
 
 namespace TestNetCore.DAO
 {
@@ -16,6 +12,12 @@ namespace TestNetCore.DAO
         public static void AddInstrument( BaseDAO dao, string descrizione )
         {
             dao.DB.Insert( new Strumento{ Descrizione = descrizione});
+        }
+
+        public static void DeleteInstrument( BaseDAO dao, int[] ids )
+        {
+            foreach( int id in ids )
+                dao.DB.Delete<Strumento>( x => x.ID == id );
         }
     }
 }

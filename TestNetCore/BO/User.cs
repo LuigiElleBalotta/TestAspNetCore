@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Lappa.ORM.Constants;
+﻿using Lappa.ORM.Constants;
 using TestNetCore.DAO;
 using TestNetCore.Models.DB;
-using TestNetCore.Models.Registration;
 
 namespace TestNetCore.BO
 {

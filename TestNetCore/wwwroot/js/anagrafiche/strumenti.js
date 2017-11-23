@@ -48,3 +48,23 @@ function modificaStrumento() {
         alert( 'non hai inserito nulla' );
     }
 }
+
+function rimuoviStrumenti() {
+    var checkboxSelezionati = getSelectedCheckboxesIn( 'tabellaStrumenti' );
+    
+    var arrayValue = $( checkboxSelezionati ).map( function() { return $( this ).val(); }).get();
+
+    if( arrayValue.length > 0 ) {
+        $.ajax({
+                type: "POST",
+                data: { 'ids': arrayValue },
+                url: "/Anagrafiche/DeleteInstrument", 
+                success: function(result){
+                    window.location.reload( true );
+                }
+            });
+    }
+    else {
+        alert( 'non hai inserito nulla' );
+    }
+}

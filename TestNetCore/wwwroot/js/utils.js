@@ -3,15 +3,14 @@ var handlingCheckAll = false;
 
 function checkAll( cbAll )
 {
-    var checked = !cbAll.checked;
 
     handlingCheckAll = true;
 
-    cbAll.up( 'table' ).select( 'input[type="checkbox"]' ).without( cbAll ).each( function( cb )
+    var tabella = cbAll.closest( 'table' );
+
+    $( '#' + tabella.id +  ' td input:checkbox' ).each( function(  )
     {
-        cb.checked = checked;
-		
-        cb.click();
+        this.checked = cbAll.checked;
     } );
 	
     handlingCheckAll = false;
@@ -64,4 +63,22 @@ function toBool( str )
     default: 
         return Boolean( str );
     }
+}
+
+function getSelectedCheckboxesIn( containerID )
+{
+    return getSelectedCheckboxes( '#' + containerID + ' input' );
+}
+
+function getSelectedCheckboxes( filter )
+{
+    var selectedCheckboxes = $( filter + ':checked' );
+    var ret = [];
+
+    for( var i = 0; i < selectedCheckboxes.length; i++) {
+        if( !$( selectedCheckboxes[ i ] ).hasClass( 'checkAll' ) && !$( selectedCheckboxes[ i ] ).hasClass( 'ignoreSelected' ))
+            ret.push( selectedCheckboxes[ i ] );
+    }
+
+    return ret;
 }
